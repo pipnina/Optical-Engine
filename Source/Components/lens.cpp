@@ -2,7 +2,7 @@
 
 Lens::Lens()
 {
-
+	name = "Lens";
 }
 
 

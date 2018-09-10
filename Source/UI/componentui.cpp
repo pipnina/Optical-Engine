@@ -34,10 +34,10 @@ void ComponentUI::updateList()
     for(uint component=0; component < manager->components.size(); component++)
     {
         //Find the respective item
-        QList<QListWidgetItem*> item = objectList->findItems(manager->components[component].name, Qt::MatchExactly);
+		QList<QListWidgetItem*> item = objectList->findItems(QString::fromStdString(manager->components[component].name), Qt::MatchExactly);
         if(item.size() == 0) //The component does not exist
         {
-            objectList->insertItem(manager->components[component].list_position, manager->components[component].name);
+			objectList->insertItem(component, QString::fromStdString(manager->components[component].name));
         }
     }
     //Run widget -> component list check to find orphaned list elements

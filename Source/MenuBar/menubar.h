@@ -4,11 +4,14 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
+#include <string>
+
+#include <Components/componentfactory.h>
 
 class MenuBar : public QMenuBar
 {
     public:
-        MenuBar(QWidget *parent);
+		MenuBar(QWidget *parent, ComponentFactory *faclink);
 
     private:
         QMenu *file;
@@ -21,6 +24,11 @@ class MenuBar : public QMenuBar
         QAction *mirror;
         QAction *lens;
 
+		ComponentFactory *factory;
+
+	private slots:
+		void mirror_signal();
+		void lens_signal();
 };
 
 #endif // MENUBAR_H

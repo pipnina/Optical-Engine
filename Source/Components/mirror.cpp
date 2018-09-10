@@ -2,7 +2,7 @@
 
 Mirror::Mirror()
 {
-
+	name = "Mirror";
 }
 
 int Mirror::set_focal_ratio(float ratio)

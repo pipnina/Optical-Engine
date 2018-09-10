@@ -8,69 +8,32 @@ ComponentManager::ComponentManager()
 
 
 //### MEMBER FUNCTIONS
-void ComponentManager::add_lens()
+void ComponentManager::add_component(Component *newComponent)
 {
-    //Create lens object
-    Lens newlens;
-    newlens.set_diameter(50.0);
-    newlens.set_side1_conic_constant(0.0);
-    newlens.set_side1_focal_ratio(0.5);
-    newlens.set_side2_conic_constant(0.0);
-    newlens.set_side2_focal_ratio(0.5);
-    //Add it to the lens list
-    lenses.emplace_back(newlens);
-
     //Create new component pointer for the lens
-    componentPointer newComponent;
-    newComponent.list_position = components.size();
-    newComponent.list_type = TYPE_LENS;
     QString name;
-    name = chooseNameNumber("Lens ");
-    newComponent.name.append(name);
+	name = chooseNameNumber(newComponent->name.c_str());
+	newComponent->name = name.toStdString();
 
     //Add it to the components list
-    components.emplace_back(newComponent);
+	components.emplace_back(*newComponent);
 
     ui->updateList();
 }
 
-void ComponentManager::add_mirror()
-{
-    //Create a new mirror object
-    Mirror newmirror;
-    newmirror.set_diameter(250);
-    newmirror.set_conic_constant(1.0);
-    newmirror.set_hole_size(0.0);
-    newmirror.set_focal_ratio(5.0);
-
-    //Add it to the mirror list
-    mirrors.emplace_back(newmirror);
-
-    //Create new component pointer for the mirror
-    componentPointer newComponent;
-    newComponent.list_position = components.size();
-    newComponent.list_type = TYPE_MIRROR;
-    QString name;
-    name = chooseNameNumber("Mirror ");
-    newComponent.name.append(name);
-
-    //Add it to the components list
-    components.emplace_back(newComponent);
-
-    ui->updateList();
-}
 
     //SWAP TWO COMPONENT'S POSITIONS
-void ComponentManager::swap_component(componentPointer component1, componentPointer component2)
+void ComponentManager::swap_component(int component1, int component2)
 {
-    component1.name = component1.name;
-    component2.name = component2.name;
+	component1 = component1;
+	component2 = component2;
     //this is just a stub until i work out if it's really needed or not
 }
 
     //DELETE A COMPONENT
-void ComponentManager::remove_component(componentPointer component)
+void ComponentManager::remove_component(int component)
 {
+	component = component;
     //Removing a component involves deleting the
 }
 
@@ -109,7 +72,8 @@ QString ComponentManager::chooseNameNumber(QString prefix)
         int sameNames = 0;
         for(auto component : components)
         {
-            int matches = QString::compare(component.name, combo);
+
+			int matches = component.name.compare(combo.toStdString());
             std::cout << "Matches: " << matches << "\n";
             if(matches == 0)
             {

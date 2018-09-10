@@ -1,22 +1,19 @@
 #include "componentfactory.h"
 
-ComponentFactory::ComponentFactory()
+#include <iostream>
+ComponentFactory::ComponentFactory(ComponentManager *managerlink)
 {
-
+	manager = managerlink;
 }
 
-Component* ComponentFactory::newComponent(std::string description)
+void ComponentFactory::newComponent(std::string description)
 {
     if(description.compare("Mirror") == 0)
     {
-        return new Mirror;
+		manager->add_component(new Mirror);
     }
     else if(description.compare("Lens") == 0)
     {
-        return new Lens;
-    }
-    else
-    {
-        return nullptr;
-    }
+		manager->add_component(new Lens);
+	}
 }

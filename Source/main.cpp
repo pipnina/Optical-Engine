@@ -1,9 +1,13 @@
 #include <QApplication>
 #include <QMainWindow>
 
-#include "MenuBar/menubar.h"
+
 #include "Components/componentmanager.h"
+#include "Components/componentfactory.h"
+#include "MenuBar/menubar.h"
 #include "UI/componentui.h"
+
+#include "Components/mirror.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,32 +17,19 @@ int main(int argc, char *argv[])
     window.setWindowTitle("Optical Engine V0.0.0a");
     window.show();
 
+	ComponentManager manager;
+	ComponentUI componentUI(&window, &manager);
+	manager.setUI(&componentUI);
 
-    MenuBar menuBar(&window);
+	ComponentFactory factory(&manager);
+
+	MenuBar menuBar(&window, &factory);
     menuBar.show();
 
-    ComponentManager manager;
-    ComponentUI componentUI(&window, &manager);
-    manager.setUI(&componentUI);
+	Mirror newMirror;
+	newMirror.name = "Meeem";
 
-    manager.add_mirror();
-    manager.add_lens();
-
-    manager.add_mirror();
-    manager.add_lens();
-
-    manager.add_mirror();
-    manager.add_lens();
-
-    manager.add_mirror();
-    manager.add_lens();
-
-    manager.add_mirror();
-    manager.add_lens();
-
-    manager.add_mirror();
-    manager.add_lens();
-
+	manager.add_component(&newMirror);
 
     return a.exec();
 }

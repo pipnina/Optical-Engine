@@ -8,8 +8,8 @@
 class ComponentFactory
 {
     public:
-        ComponentFactory();
-        Component* newComponent(std::string description);
+		ComponentFactory(ComponentManager *managerlink);
+		void newComponent(std::string description);
 
     private:
         ComponentManager* manager;

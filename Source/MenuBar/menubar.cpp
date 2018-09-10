@@ -1,6 +1,6 @@
 #include "menubar.h"
 
-MenuBar::MenuBar(QWidget *parent)
+MenuBar::MenuBar(QWidget *parent, ComponentFactory *faclink)
 {
     setParent(parent);
 
@@ -15,5 +15,19 @@ MenuBar::MenuBar(QWidget *parent)
     mirror  = add->addAction("Mirror");
     lens    = add->addAction("Lens");
 
+	factory = faclink;
 
+	connect(mirror, &QAction::triggered, this, &MenuBar::mirror_signal);
+	connect(lens, &QAction::triggered, this, &MenuBar::lens_signal);
+
+}
+
+void MenuBar::mirror_signal()
+{
+	factory->newComponent("Mirror");
+}
+
+void MenuBar::lens_signal()
+{
+	factory->newComponent("Lens");
 }
