@@ -14,11 +14,11 @@ class ComponentUI
 {
     public:
 		ComponentUI(QWidget *parent, ComponentManager *managerLink);
-        void updateList();
+		void updateList();
 
-    private:
-        QListWidget *objectList;
-        QTreeWidget *properties;
+	private:
+		QListWidget *objectList;
+		QTreeWidget *properties;
         ComponentManager *manager;
 };
 

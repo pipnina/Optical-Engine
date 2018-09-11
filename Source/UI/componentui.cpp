@@ -4,14 +4,14 @@ ComponentUI::ComponentUI(QWidget *parent, ComponentManager *managerLink)
 {
     //We will initialize the two widgets first, and then set them up properly
         //The list widget displays the components
-    objectList = new QListWidget(parent);
-    objectList->resize(150,150);
+	objectList = new QListWidget(parent);
+	objectList->resize(200,150);
     objectList->move(0, 30);
     objectList->show();
 
         //The tree widget shows the selected object's peroperties
-    properties = new QTreeWidget(parent);
-    properties->resize(150, 250);
+	properties = new QTreeWidget(parent);
+	properties->resize(200, 250);
     properties->move(0, 190);
     properties->show();
     properties->setColumnCount(2);

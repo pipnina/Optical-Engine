@@ -1,9 +1,9 @@
 #include "componentfactory.h"
 
 #include <iostream>
-ComponentFactory::ComponentFactory(ComponentManager *managerlink)
+ComponentFactory::ComponentFactory()
 {
-	manager = managerlink;
+
 }
 
 void ComponentFactory::newComponent(std::string description)
@@ -16,4 +16,9 @@ void ComponentFactory::newComponent(std::string description)
     {
 		manager->add_component(new Lens);
 	}
+}
+
+void ComponentFactory::setManagerLink(ComponentManager* newlink)
+{
+	manager = newlink;
 }

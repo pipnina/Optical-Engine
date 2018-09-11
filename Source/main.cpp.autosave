@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
 	ComponentFactory factory;
 	factory.setManagerLink(&manager);
 	menuBar.setFactoryLink(&factory);
-
-
 	manager.setUI(&componentUI);
 
 

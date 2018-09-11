@@ -11,7 +11,8 @@
 class MenuBar : public QMenuBar
 {
     public:
-		MenuBar(QWidget *parent, ComponentFactory *faclink);
+		MenuBar(QWidget *parent);
+		void setFactoryLink(ComponentFactory*);
 
     private:
         QMenu *file;
