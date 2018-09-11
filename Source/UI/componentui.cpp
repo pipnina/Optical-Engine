@@ -1,6 +1,6 @@
 #include "componentui.h"
 
-ComponentUI::ComponentUI(QWidget* parent, ComponentManager *managerLink)
+ComponentUI::ComponentUI(QWidget *parent, ComponentManager *managerLink)
 {
     //We will initialize the two widgets first, and then set them up properly
         //The list widget displays the components
@@ -16,7 +16,7 @@ ComponentUI::ComponentUI(QWidget* parent, ComponentManager *managerLink)
     properties->show();
     properties->setColumnCount(2);
 
-    QString column1("Properties");
+	QString column1("Properties");
     QString column2("Values");
     QList<QString> strings;
     strings.append(column1);

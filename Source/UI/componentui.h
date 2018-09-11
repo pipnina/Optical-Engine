@@ -1,6 +1,7 @@
 #ifndef COMPONENTUI_H
 #define COMPONENTUI_H
 
+#include <QMainWindow>
 #include <QListWidget>
 #include <QTreeWidget>
 
@@ -12,7 +13,7 @@ class ComponentManager;
 class ComponentUI
 {
     public:
-        ComponentUI(QWidget *parent, ComponentManager *managerLink);
+		ComponentUI(QWidget *parent, ComponentManager *managerLink);
         void updateList();
 
     private:
