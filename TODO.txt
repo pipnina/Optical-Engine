@@ -1,0 +1,2 @@
+MenuBar:
+    Actually trigger creation of components under "New" tab.

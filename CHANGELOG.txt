@@ -1,0 +1,24 @@
+VERSION: TBD
+
+    MenuBar:
+        MenuBar now has a link to the ComponentFactory
+        MenuBAr now actually triggers creation of components under "New" tab.
+        
+    ComponentFactory:
+        ComponentFactory now has a link to the ComponentManager
+        
+    ComponentManager:
+        addLens() and addMirror() have been replaced with addComponent(Component*), no longer creates components itself.
+        
+        ComponentManager is now blind to subtypes of Component, it is left to classes accessing the components to deal with subtype details.
+        
+        ComponentPointer no longer exists as a struct, all Components are stored in a single std::vector<Component> inside ComponentManager
+        
+    ComponentUI:
+        updateList() now assumes that the std::vector holding components in ComponentManager also controls the component's position in the optical system.
+        
+    Lens:
+        Now sets its name to "Lens" in class constructor
+        
+    Mirror:
+        Now sets its name to "Mirror" in class constructor

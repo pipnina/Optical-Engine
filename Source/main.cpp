@@ -1,0 +1,39 @@
+#include <QApplication>
+#include <QMainWindow>
+
+
+#include "Components/componentmanager.h"
+#include "Components/componentfactory.h"
+#include "MenuBar/menubar.h"
+#include "UI/componentui.h"
+
+#include "Components/mirror.h"
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    QMainWindow window;
+    window.resize(1280, 720);
+	window.setWindowTitle("Optical Engine V0.1c");
+    window.show();
+
+	MenuBar menuBar(&window);
+	menuBar.show();
+	ComponentManager manager;
+	ComponentUI componentUI(&window, &manager);
+	ComponentFactory factory;
+	factory.setManagerLink(&manager);
+	menuBar.setFactoryLink(&factory);
+
+
+	manager.setUI(&componentUI);
+
+
+
+	Mirror newMirror;
+	newMirror.name = "Meeem";
+
+	manager.add_component(&newMirror);
+
+    return a.exec();
+}
